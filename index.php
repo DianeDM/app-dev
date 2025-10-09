@@ -31,9 +31,6 @@ if (isset($_GET['message'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="assets/css/serveit.css" rel="stylesheet" />
-    <style>
-      .navbar-logo { height: 36px; width: 36px; object-fit: contain; }
-    </style>
 </head>
 <body>
     <?php if ($success_message): ?>
@@ -327,52 +324,6 @@ if (isset($_GET['message'])) {
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href && href.length > 1) {
-              e.preventDefault();
-              const target = document.querySelector(href);
-              if (target) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight || 0;
-                const top = target.getBoundingClientRect().top + window.scrollY - navbarHeight - 10;
-                window.scrollTo({ top, behavior: 'smooth' });
-              }
-            }
-          });
-        });
-
-        // Auto-dismiss alerts after 5s
-        setTimeout(() => {
-          document.querySelectorAll('.alert').forEach(el => {
-            const bsAlert = bootstrap.Alert.getOrCreateInstance(el);
-            bsAlert.close();
-          });
-        }, 5000);
-      });
-
-      // Navbar background on scroll
-      window.addEventListener('scroll', () => {
-        const navbar = document.querySelector('.navbar');
-        if (!navbar) return;
-        if (window.scrollY > 50) {
-          navbar.style.background = 'linear-gradient(135deg, rgba(44, 90, 160, 0.95) 0%, rgba(30, 58, 138, 0.95) 100%)';
-          navbar.style.backdropFilter = 'blur(10px)';
-        } else {
-          navbar.style.background = 'linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%)';
-          navbar.style.backdropFilter = 'none';
-        }
-      });
-
-      // Intersection Observer for reveals
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('fade-in'); });
-      }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
-      document.querySelectorAll('.service-card, .announcement-card, .about-card').forEach(card => observer.observe(card));
-    </script>
+    <script src="assets/js/serveit.js"></script>
 </body>
 </html>
